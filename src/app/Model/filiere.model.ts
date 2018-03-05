@@ -1,7 +1,7 @@
 export class Filiere {
     
-private _idFiliere : number;
-private _libelleFiliere : string;
+    private _idFiliere : number;
+    private _libelleFiliere : string;
 
     constructor(idFiliere: number, libelleFiliere : string)
     {
@@ -11,11 +11,11 @@ private _libelleFiliere : string;
     get idFiliere(): number {
         return this._idFiliere;
     }
-    
+
     get libelleFiliere(): string {
-    return this._libelleFiliere;
+        return this._libelleFiliere;
     }
-    set libelleFiliere(value: string) {
-    this._libelleFiliere = value;
+        set libelleFiliere(value: string) {
+        this._libelleFiliere = value;
     }  
 }

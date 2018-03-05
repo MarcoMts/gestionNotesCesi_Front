@@ -1,6 +1,6 @@
 export class Promotion {
-private _idPromotion : number;
-private _libellePromotion : string;
+    private _idPromotion : number;
+    private _libellePromotion : string;
 
     constructor(idPromotion: number, libellePromotion : string)
     {
@@ -12,9 +12,9 @@ private _libellePromotion : string;
     }
     
     get libellePromotion(): string {
-    return this._libellePromotion;
+        return this._libellePromotion;
     }
     set libellePromotion(value: string) {
-    this._libellePromotion = value;
+        this._libellePromotion = value;
     }  
 }

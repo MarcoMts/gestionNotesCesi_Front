@@ -28,10 +28,14 @@
         </td>
       </tr>
       
+      
       <input id="idNote" name="idNote" type="hidden" value="{{etudiantNote.idNote}}">
     </tbody>
-   
+    <div *ngIf="!isSaisi">
+      
       <button type="submit" class="btn btn-primary" (click)="validateNotes()">Valider</button>
+    </div>
+   
   
     </table>
   
