@@ -1,14 +1,17 @@
 [
     {
         "idModule":1,
-        "libelleModule":"MS PROJECT"
+        "libelleModule":"MS PROJECT",
+        "isSaisi":true
     },
     {
         "idModule":2,
-        "libelleModule":"SQL"
+        "libelleModule":"SQL",
+        "isSaisi":false
     },
     {
         "idModule":3,
-        "libelleModule":"ANGULAR"
+        "libelleModule":"ANGULAR",
+        "isSaisi":false
     }  
 ]

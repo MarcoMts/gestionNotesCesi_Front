@@ -1,26 +1,31 @@
 [
     {
         "idModule":1,
+        "idNote":1,        
         "libelleModule":"Java",
         "noteValeur":14.5
     },
     {
         "idModule":2,
+        "idNote":2,                
         "libelleModule":"Php",
         "noteValeur":18
     },
     {
         "idModule":3,
+        "idNote":3,                        
         "libelleModule":"Agile",
         "noteValeur":12
     },
     {
         "idModule":4,
+        "idNote":5,                                
         "libelleModule":"MsProject",
         "noteValeur":13
     },
     {
         "idModule":5,
+        "idNote":6,                                
         "libelleModule":"Securite",
         "noteValeur":16
     }

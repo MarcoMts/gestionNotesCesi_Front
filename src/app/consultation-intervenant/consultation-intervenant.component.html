@@ -24,14 +24,20 @@
       <tr>
         <td>{{etudiantNote.personneNom}} {{etudiantNote.personnePrenom}}</td>
         <td>
-              {{etudiantNote.noteValeur}}   
+              <input type="float" class="form-control" id="noteValeur" value="{{etudiantNote.noteValeur}}">     
         </td>
       </tr>
-      
+      <input id="idEleve" name="idEleve" type="hidden" value="{{etudiantNote.idEleve}}">
       <input id="idNote" name="idNote" type="hidden" value="{{etudiantNote.idNote}}">
     </tbody>
-   
-      <button type="submit" class="btn btn-primary" (click)="validateNotes()">Valider</button>
+    <div *ngIf="isSaisi">
+      
+      <button type="submit" class="btn btn-primary" (click)="updateNotes()">Modifier</button>
+    </div>
+    <div *ngIf="!isSaisi">
+      
+      <button type="submit" class="btn btn-primary" (click)="createNotes()">Valider</button>
+    </div>
   
     </table>
   

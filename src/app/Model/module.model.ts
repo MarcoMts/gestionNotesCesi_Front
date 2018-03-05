@@ -6,6 +6,7 @@ private _idModule : number;
 private _libelleModule : string;
 private _filiere: Filiere;
 private _intervenants : Array<Intervenant>;
+private _isSaisi : boolean;
 
     constructor(idModule: number, libelleModule : string)
     {
@@ -28,5 +29,11 @@ private _intervenants : Array<Intervenant>;
     }
     set intervenants(value: Array<Intervenant>) {
     this._intervenants = value;
+    }  
+    get isSaisi():  boolean {
+        return this._isSaisi;
+    }
+    set isSaisi(value: boolean) {
+        this._isSaisi = value;
     }  
 }

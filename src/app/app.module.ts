@@ -11,6 +11,7 @@ import {NoteService} from './note.service';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { ConsultationPiloteComponent } from './consultation-pilote/consultation-pilote.component';
+import { ConsultationIntervenantComponent } from './consultation-intervenant/consultation-intervenant.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ConsultationPiloteComponent } from './consultation-pilote/consultation-
     OptionsComponent,
     LoginComponent,
     HeaderComponent,
-    ConsultationPiloteComponent
+    ConsultationPiloteComponent,
+    ConsultationIntervenantComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { ConsultationPiloteComponent } from './consultation-pilote/consultation-
     RouterModule.forRoot([
       {path:'consultation',component:ConsultationComponent},
       {path:'consultationPilote',component:ConsultationPiloteComponent},
+      {path:'consultationIntervenant',component:ConsultationIntervenantComponent},      
       {path:'options',component:OptionsComponent}
       
     ])

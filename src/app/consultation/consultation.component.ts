@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NoteService} from '../note.service';
+import { Note } from '../Model/note.model';
 @Component({
   selector: 'app-consultation',
   templateUrl: './consultation.component.html',
@@ -8,11 +9,15 @@ import {NoteService} from '../note.service';
 export class ConsultationComponent implements OnInit {
   
   constructor(private noteService : NoteService) { }
-  notes = [];
+  notes: Array<Note> = [];
   
 
 
   ngOnInit() {
-    this.noteService.getNotesJSON().subscribe(responseNotes => this.notes = responseNotes);
+    //this.noteService.getNotes().then(notes => this.notes = notes);
+    this.noteService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
+    
   }
+
+  
 }

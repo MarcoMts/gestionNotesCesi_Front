@@ -3,13 +3,12 @@ import {NoteService} from '../note.service';
 import { Note } from '../Model/note.model';
 import {Module} from '../Model/module.model';
 
-
 @Component({
-  selector: 'app-consultation-pilote',
-  templateUrl: './consultation-pilote.component.html',
-  styleUrls: ['./consultation-pilote.component.css']
+  selector: 'app-consultation-intervenant',
+  templateUrl: './consultation-intervenant.component.html',
+  styleUrls: ['./consultation-intervenant.component.css']
 })
-export class ConsultationPiloteComponent implements OnInit {
+export class ConsultationIntervenantComponent implements OnInit {
 
   constructor(private filieresService : NoteService, private promotionsService : NoteService, private modulesService : NoteService, private etudiantsNotesService : NoteService) { }
   
@@ -23,6 +22,7 @@ export class ConsultationPiloteComponent implements OnInit {
   modules = [];
   etudiantsNotes = [];
   notes: Array<Note> = [];
+  
   
   ngOnInit() {
     this.filieresService.getFilieres().subscribe(responseFilieres => this.filieres = responseFilieres);    
@@ -55,20 +55,15 @@ export class ConsultationPiloteComponent implements OnInit {
     this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes => this.etudiantsNotes = responseEtudiantsNotes); 
 
   }
-  validateNotes() {
-    let reslt : any = [];
-    this.selectedModule=<HTMLSelectElement>document.getElementById("module");
-    for (let i=0;i<this.modules.length;i++){
-      if(this.selectedModule.value == this.modules[i].libelleModule) {
-         reslt = this.modules[i]
-      }
-    }
-    console.log(reslt.idModule);
+  updateNotes() {
     
-    this.etudiantsNotesService.createEtudiantsNotes(reslt.idModule);
-
+    this.etudiantsNotesService.createEtudiantsNotes(this.notes);
     }
- 
+  createNotes() {
+    this.etudiantsNotesService.setEtudiantsNotes(this.notes);
+  }
+  
 
 
 }
+

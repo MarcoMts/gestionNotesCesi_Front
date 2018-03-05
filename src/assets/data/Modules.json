@@ -1,18 +1,24 @@
 [
     {
         "idModule":1,
-        "libelleModule":"PHP"
+        "libelleModule":"PHP",
+        "isSaisi":false
     },
     {
         "idModule":2,
-        "libelleModule":"JAVA"
+        "libelleModule":"JAVA",
+        "isSaisi":true
+        
     },
     {
         "idModule":3,
-        "libelleModule":".NET"
+        "libelleModule":".NET",
+        "isSaisi":false
+        
     },
     {
         "idModule":4,
-        "libelleModule":"AGILE"
+        "libelleModule":"AGILE",
+        "isSaisi":true        
     }  
 ]
