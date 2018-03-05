@@ -53,9 +53,12 @@ export class NoteService {
     createEtudiantsNotes( notes : Array<Note>,) {
         return this.http.get('./assets/data/Etudiants.json');
     }  
-    validateEtudiantsNotes( idModule : String) {
+    validateEtudiantsNotes( idModule : string) {
         return this.http.get('./assets/data/Etudiants.json');
-    }  
+    } 
+    getUser(email : string, password : string) {
+        return this.http.get('./assets/data/loginIntervenant.json').map((response : Response)=>response.json());
+    } 
 
 }
 

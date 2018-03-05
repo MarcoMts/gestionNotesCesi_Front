@@ -17,7 +17,7 @@ export class ConsultationPiloteComponent implements OnInit {
   selectedPromotion = null; 
   selectedModule = null; 
   selectedEtudiantsNotes = null; 
-  isValide=false;
+  isValid=false;
   filieres = [];    
   promotions = [];
   modules = [];
@@ -48,8 +48,9 @@ export class ConsultationPiloteComponent implements OnInit {
          reslt = this.modules[i]
       }
     }
+    this.isValid=reslt.moduleIsValid;   
+    
 
-    this.isValide=reslt.isValide;   
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
     
     this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes => this.etudiantsNotes = responseEtudiantsNotes); 

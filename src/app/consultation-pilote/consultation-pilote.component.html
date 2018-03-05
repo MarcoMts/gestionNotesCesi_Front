@@ -31,12 +31,15 @@
       
       <input id="idNote" name="idNote" type="hidden" value="{{etudiantNote.idNote}}">
     </tbody>
-    <div *ngIf="!isSaisi">
-      
-      <button type="submit" class="btn btn-primary" (click)="validateNotes()">Valider</button>
-    </div>
-   
+    
   
     </table>
-  
+    <div *ngIf="!isValid">
+        
+        <button type="submit" class="btn btn-primary" (click)="validateNotes()">Valider</button>
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="isValid">
+          
+          <label>Notes validées</label>        
+      </div>
 </form>

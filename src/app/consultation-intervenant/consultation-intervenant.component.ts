@@ -36,7 +36,7 @@ export class ConsultationIntervenantComponent implements OnInit {
 
   updatePromotions() {
     this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
-    this.modulesService.getModules(this.selectedPromotion.value).subscribe(responseModules => this.modules = responseModules);  
+    this.modulesService.getModulesIntervenant(this.selectedPromotion.value).subscribe(responseModules => this.modules = responseModules);  
     this.updateModules();    
 
   }
@@ -49,7 +49,7 @@ export class ConsultationIntervenantComponent implements OnInit {
       }
     }
 
-    this.isSaisi=reslt.isSaisi;   
+    this.isSaisi=reslt.moduleIsSaisie;   
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
     
     this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes => this.etudiantsNotes = responseEtudiantsNotes); 

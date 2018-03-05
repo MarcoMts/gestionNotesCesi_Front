@@ -3,13 +3,13 @@
         "idModule":1,
         "libelleModule":"PHP",
         "moduleIsSaisie":false,
-        "_moduleIsValid":true
+        "moduleIsValid":true
     },
     {
         "idModule":2,
         "libelleModule":"JAVA",
         "moduleIsSaisie":true,
-        "_moduleIsValid":true
+        "moduleIsValid":true
         
         
     },
@@ -17,7 +17,7 @@
         "idModule":3,
         "libelleModule":".NET",
         "moduleIsSaisie":false,
-        "_moduleIsValid":false
+        "moduleIsValid":false
         
         
     },
@@ -25,7 +25,7 @@
         "idModule":4,
         "libelleModule":"AGILE",
         "moduleIsSaisie":true,
-        "_moduleIsValid":true
+        "moduleIsValid":true
         
     }  
 ]

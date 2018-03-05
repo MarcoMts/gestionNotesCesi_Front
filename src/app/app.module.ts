@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { ConsultationPiloteComponent } from './consultation-pilote/consultation-pilote.component';
 import { ConsultationIntervenantComponent } from './consultation-intervenant/consultation-intervenant.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,7 @@ import { ConsultationIntervenantComponent } from './consultation-intervenant/con
       {path:'consultation',component:ConsultationComponent},
       {path:'consultationPilote',component:ConsultationPiloteComponent},
       {path:'consultationIntervenant',component:ConsultationIntervenantComponent},      
-      {path:'options',component:OptionsComponent}
+      {path:'login',component:LoginComponent}
       
     ])
   ],
