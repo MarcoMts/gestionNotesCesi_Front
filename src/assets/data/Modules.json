@@ -1,0 +1,18 @@
+[
+    {
+        "idModule":1,
+        "libelleModule":"PHP"
+    },
+    {
+        "idModule":2,
+        "libelleModule":"JAVA"
+    },
+    {
+        "idModule":3,
+        "libelleModule":".NET"
+    },
+    {
+        "idModule":4,
+        "libelleModule":"AGILE"
+    }  
+]

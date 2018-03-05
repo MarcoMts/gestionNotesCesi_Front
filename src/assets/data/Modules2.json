@@ -1,0 +1,14 @@
+[
+    {
+        "idModule":1,
+        "libelleModule":"MS PROJECT"
+    },
+    {
+        "idModule":2,
+        "libelleModule":"SQL"
+    },
+    {
+        "idModule":3,
+        "libelleModule":"ANGULAR"
+    }  
+]

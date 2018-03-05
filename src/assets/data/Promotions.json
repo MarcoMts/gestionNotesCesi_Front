@@ -1,0 +1,18 @@
+[
+    {
+        "idPromotion":1,
+        "libellePromotion":"2015"
+    },
+    {
+        "idPromotion":2,
+        "libellePromotion":"2016"
+    },
+    {
+        "idPromotion":3,
+        "libellePromotion":"2017"
+    },
+    {
+        "idPromotion":4,
+        "libellePromotion":"2018"
+    }  
+]

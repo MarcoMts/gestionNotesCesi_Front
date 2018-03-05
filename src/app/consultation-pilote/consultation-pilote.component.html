@@ -1,0 +1,33 @@
+<div class="form-group">
+  <label for="sel1">Filieres :</label>
+  <select id="filiere" class="form-control" name="filiere" (change)="updateFilieres(value)" >
+    <option  *ngFor="let filiere of filieres" value="{{filiere.idFiliere}}">{{filiere.libelleFiliere}}</option>
+  </select>
+  <label for="sel1">Promotions :</label>
+  <select class="form-control" id="promotion" name="promotion" (change)="updatePromotions(value)">
+    <option  *ngFor="let promotion of promotions" value="{{promotion.idPromotion}}">{{promotion.libellePromotion}}</option>
+  </select>
+  <label for="sel1">Modules :</label>
+  <select class="form-control" id="module" name="module" (change)="updateModules(value)">
+    <option  *ngFor="let module of modules">{{module.libelleModule}}</option>
+  </select>
+</div>
+<form>      
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Etudiant</th>
+        <th scope="col">Note</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let etudiantNote of etudiantsNotes">
+      <tr>
+        <td>{{etudiantNote.personneNom}} {{etudiantNote.personnePrenom}}</td>
+        <td>
+              <input type="float" class="form-control" id="exampleInputEmail1" value="{{etudiantNote.noteValeur}}">
+        </td>
+      </tr>
+    </tbody>
+    <button type="submit" class="btn btn-primary">Valider</button>
+  </table>
+</form>

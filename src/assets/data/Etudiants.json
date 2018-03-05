@@ -1,0 +1,42 @@
+[
+    {  
+        "idPersonne":"1",
+        "personneNom":"BUZIT",
+        "personnePrenom":"Kévin",
+        "idNote":"1",
+        "noteValeur":15.9,
+        "noteIsValid":true
+   },  
+   {  
+        "idPersonne":"2",
+        "personneNom":"MARTINS",
+        "personnePrenom":"Marco",
+        "idNote":"2",
+        "noteValeur":14,
+        "noteIsValid":true
+    },
+    {  
+        "idPersonne":"3",
+        "personneNom":"BOURGEOIS",
+        "personnePrenom":"Erwan",
+        "idNote":"3",
+        "noteValeur":17,
+        "noteIsValid":true
+    },
+    {  
+        "idPersonne":"4",
+        "personneNom":"LE MOAL",
+        "personnePrenom":"Yann",
+        "idNote":"4",
+        "noteValeur":15,
+        "noteIsValid":true
+    },
+    {  
+        "idPersonne":"5",
+        "personneNom":"FERNANDES",
+        "personnePrenom":"Adrien",
+        "idNote":"5",
+        "noteValeur":17,
+        "noteIsValid":true
+    }   
+]

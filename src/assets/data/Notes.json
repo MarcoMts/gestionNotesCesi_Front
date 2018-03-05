@@ -1,0 +1,27 @@
+[
+    {
+        "idModule":1,
+        "libelleModule":"Java",
+        "noteValeur":14.5
+    },
+    {
+        "idModule":2,
+        "libelleModule":"Php",
+        "noteValeur":18
+    },
+    {
+        "idModule":3,
+        "libelleModule":"Agile",
+        "noteValeur":12
+    },
+    {
+        "idModule":4,
+        "libelleModule":"MsProject",
+        "noteValeur":13
+    },
+    {
+        "idModule":5,
+        "libelleModule":"Securite",
+        "noteValeur":16
+    }
+]

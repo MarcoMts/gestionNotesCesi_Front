@@ -1,0 +1,22 @@
+[
+    {
+        "idFiliere":1,
+        "libelleFiliere":"RIL"
+    },
+    {
+        "idFiliere":2,
+        "libelleFiliere":"RISR"
+    },
+    {
+        "idFiliere":3,
+        "libelleFiliere":"QSE"
+    },
+    {
+        "idFiliere":4,
+        "libelleFiliere":"MSI"
+    },
+    {
+        "idFiliere":5,
+        "libelleFiliere":"BTP"
+    }
+]
