@@ -25,19 +25,30 @@ export class ConsultationPiloteComponent implements OnInit {
   notes: Array<Note> = [];
   
   ngOnInit() {
-    this.filieresService.getFilieres().subscribe(responseFilieres => this.filieres = responseFilieres);    
-    this.updateFilieres();    
+    this.filieresService.getFilieres().subscribe(responseFilieres => {
+      this.filieres = responseFilieres
+      this.updateFilieres();          
+    });    
   }
   updateFilieres() {
     this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");    
-    this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions => this.promotions = responsePromotions);    
+    this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions =>
+      { this.promotions = responsePromotions
+        console.log("promotions",this.promotions); 
+        
+      });    
+      console.log("promotions",this.promotions); 
+      
     this.updatePromotions();
   }
 
   updatePromotions() {
     this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
-    this.modulesService.getModules(this.selectedPromotion.value).subscribe(responseModules => this.modules = responseModules);  
-    this.updateModules();    
+    this.modulesService.getModules(this.selectedPromotion.value).subscribe(responseModules => {
+      this.modules = responseModules
+      this.updateModules();   
+      
+    });  
 
   }
   updateModules() {
@@ -51,7 +62,14 @@ export class ConsultationPiloteComponent implements OnInit {
     this.isValid=reslt.moduleIsValid;   
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
     
-    this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes => this.etudiantsNotes = responseEtudiantsNotes); 
+    this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes =>
+      {
+      this.etudiantsNotes = responseEtudiantsNotes
+      console.log("test etudiants",this.etudiantsNotes);
+      
+      }); 
+  
+  
   }
   validateNotes() {
     let reslt : any = [];

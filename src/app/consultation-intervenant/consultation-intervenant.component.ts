@@ -25,8 +25,12 @@ export class ConsultationIntervenantComponent implements OnInit {
   
   
   ngOnInit() {
-    this.filieresService.getFilieres().subscribe(responseFilieres => this.filieres = responseFilieres);    
-    this.updateFilieres();  
+    this.filieresService.getFilieres().subscribe(responseFilieres => 
+      {
+        this.filieres = responseFilieres
+        this.updateFilieres(); 
+        
+      });    
     let reslt : any = [];
 
     this.selectedModule= <HTMLSelectElement>document.getElementById("module");
@@ -35,22 +39,37 @@ export class ConsultationIntervenantComponent implements OnInit {
          reslt = this.modules[i]
       }
     }
-
-    this.isSaisi=reslt.moduleIsSaisie;   
   }
+  /**
+   * Recupre toutes les filieres
+   */
   updateFilieres() {
     this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");    
-    this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions => this.promotions = responsePromotions);    
-    this.updatePromotions();
+    this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions =>
+      {
+        this.promotions = responsePromotions
+        this.updatePromotions();
+        
+      } );    
   }
-
+/**
+   * Recupre toutes les promotions de la filiere selectionne 
+   */
   updatePromotions() {
     this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
-    this.modulesService.getModulesIntervenant(this.selectedPromotion.value).subscribe(responseModules => this.modules = responseModules);  
-    this.updateModules(); 
+    this.modulesService.getModulesIntervenant(this.selectedPromotion.value).subscribe(responseModules =>
+      {
+        this.modules = responseModules
+        this.updateModules(); 
+        console.log(this.modules);
+      } );  
+    
 
 
   }
+  /**
+   * Recupre tout les modules où intervient l'intervenant dans la promotion selectionné
+   */
   updateModules() {
     let reslt : any = [];
     this.selectedModule= <HTMLSelectElement>document.getElementById("module");
@@ -59,33 +78,37 @@ export class ConsultationIntervenantComponent implements OnInit {
          reslt = this.modules[i]
       }
     }
+    this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(
+      
+      responseEtudiantsNotes => 
+      {
+        this.etudiantsNotes = responseEtudiantsNotes
 
-    this.isSaisi=reslt.moduleIsSaisie;   
-   // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
+        console.log("test notes",this.etudiantsNotes);
+        if(this.etudiantsNotes[0].noteValeur===null)
+        {
+          this.isSaisi=false;
+        }
+        {
+          this.isSaisi=true;
+        }
+        
+      }
+    ); 
     
-    this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes => this.etudiantsNotes = responseEtudiantsNotes); 
-
+   // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);   
+   
   }
   updateNotes() {
     
     this.etudiantsNotesService.setEtudiantsNotes(this.selectedModule.value,this.etudiantsNotes);
-    console.log("test update");
-    for (let i=0;i<this.etudiantsNotes.length;i++){
-      //this.etudiantsNotes[i].noteValeur = this.myForm.noteValeur[i]; 
-      
-      console.log("test",this.etudiantsNotes[i]);
-      
-}
+    console.log(this.etudiantsNotes);
+    
     }
   createNotes() {
-
-    /*for (let i=0;i<this.etudiantsNotes.length;i++){
-          this.etudiantsNotes[i].noteValeur = 17; 
-          console.log("test",this.etudiantsNotes[i]);
-          
-    }*/
-    console.log(this.etudiantsNotes[0]);
     this.etudiantsNotesService.createEtudiantsNotes(this.notes,this.etudiantsNotes);
+    console.log(this.etudiantsNotes);
+    
   }
   
 

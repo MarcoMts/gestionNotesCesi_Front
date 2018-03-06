@@ -32,6 +32,7 @@ import { ConsultationIntervenantComponent } from './consultation-intervenant/con
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
+      
       {path:'consultation',component:ConsultationComponent},
       {path:'consultationPilote',component:ConsultationPiloteComponent},
       {path:'consultationIntervenant',component:ConsultationIntervenantComponent},      

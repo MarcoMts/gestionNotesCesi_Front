@@ -11,8 +11,8 @@ import {NoteService} from '../note.service';
 export class LoginComponent implements OnInit {
   typeUser : string;
   user = [];   
-  email : string;
-  password : string;
+  email : any;
+  password : any;
   error: any = null;
   
   selectedUser : any = null;
@@ -25,10 +25,12 @@ export class LoginComponent implements OnInit {
   }
   login(){
       this.selectedUser=<HTMLSelectElement>document.getElementById("type");
-
+      this.email=<HTMLSelectElement>document.getElementById("email");
+      this.password=<HTMLSelectElement>document.getElementById("password");
+      console.log("Test login", this.email.value,this.password.value);
       if(this.selectedUser.value==="Eleve")
       {
-        this.loginService.loginEleve(this.email,this.password).subscribe(responseLoginEleve => {
+        this.loginService.loginEleve(this.email.value,this.password.value).subscribe(responseLoginEleve => {
           this.infoUser = responseLoginEleve
           if(this.infoUser[0].isConnected)
           {

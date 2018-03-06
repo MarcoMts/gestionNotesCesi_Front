@@ -1,12 +1,12 @@
 <div class="alert alert-danger" *ngIf="!!error" align="center"><strong>{{ error.title }}<br></strong>{{ error.text }}</div>
 
-<form>
+<form #myForm="ngForm">
  
 <div class="form-group">
   <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" >
 </div>
 <div class="form-group">
-  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe" >
+  <input type="password" class="form-control" id="password" placeholder="Mot de passe" >
 </div>
 <label for="sel1">Utilisateur :</label>
 <div>

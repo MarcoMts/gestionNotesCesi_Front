@@ -11,7 +11,7 @@ import {Note} from "../app/model/note.model";
 export class NoteService {
     constructor(private http:Http) {
     }
-    private url:string="http://localhost:8080/notes";
+    private url:string="http://10.129.128.145:81/TestSlim/public/";
     Notes : Array<Note>; 
     
    /* getNotesJSON(){
@@ -24,26 +24,27 @@ export class NoteService {
         })
     }*/
     getNotes(){
-        return this.http.get('./assets/data/Notes.json').map((response : Response)=>response.json());
+        return this.http.get(this.url+"notes/eleve/1").map((response : Response)=>response.json());
     }
     getFilieres() {
-        return this.http.get('./assets/data/Filieres.json').map((response : Response)=>response.json());
+        return this.http.get(this.url+"filieres").map((response : Response)=>response.json());
     }
     getPromotions(selectedFiliere : string) {
         
-        return this.http.get('./assets/data/Promotions.json').map((response : Response)=>response.json());
+        return this.http.get(this.url+"promotions/1").map((response : Response)=>response.json());
         
     }
     getModules(selectedPromotion : string) {
        
-        return this.http.get('./assets/data/Modules.json').map((response : Response)=>response.json());
+        return this.http.get(this.url+"modules/1").map((response : Response)=>response.json());
         
     }
     getModulesIntervenant(selectedPromotion : string) {
-        return this.http.get('./assets/data/Modules.json').map((response : Response)=>response.json());
+        return this.http.get(this.url+"modules/1/1").map((response : Response)=>response.json());
     }
+    
     getEtudiantsNotes(selectedModule : string) {
-        return this.http.get('./assets/data/Etudiants.json').map((response : Response)=>response.json());
+        return this.http.get(this.url+"notes/1").map((response : Response)=>response.json());
     }
 
 

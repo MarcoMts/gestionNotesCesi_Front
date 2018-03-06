@@ -9,7 +9,7 @@
   </select>
   <label for="sel1">Modules :</label>
   <select class="form-control" id="module" name="module" (change)="updateModules()">
-    <option  *ngFor="let module of modules">{{module.libelleModule}}</option>
+    <option  *ngFor="let module of modules" >{{module.libelleModule}}</option>
   </select>
 </div>
 <form  #myForm="ngForm" >      
