@@ -1,4 +1,6 @@
-<div class="alert alert-danger" *ngIf="!!error" align="center"><strong>{{ error.title }}<br></strong>{{ error.text }}</div>
+
+
+  
 <div class="container">
     <div class="card card-container">
         <img id="profile-img" class="profile-img-card" src="../../assets/img/user.png" />
@@ -24,4 +26,8 @@
 
     </form>
 </div>
+<div *ngIf="error">
+ <strong>Email ou mot de passe incorrect</strong>
+    
+  </div>
 </div>

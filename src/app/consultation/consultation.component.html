@@ -8,12 +8,12 @@
         <th scope="col">Note</th>
       </tr>
     </thead>
+    <!--Boucle sur toute les notes de l'eleve pour les afficher-->
     <tbody *ngFor="let note of notes">
       <tr>
         <td>{{note.libelleModule}}</td>
         <td>{{note.noteValeur}}</td>
-      </tr>
-    
+      </tr>  
     </tbody>
   </table>
   </div>

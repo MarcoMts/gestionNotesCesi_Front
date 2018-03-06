@@ -25,11 +25,15 @@ export class ConsultationPiloteComponent implements OnInit {
   notes: Array<Note> = [];
   
   ngOnInit() {
+    //Ramene toutes les filieres au chargement de la page
     this.filieresService.getFilieres().subscribe(responseFilieres => {
       this.filieres = responseFilieres
       this.updateFilieres();          
     });    
   }
+  /**
+   * Au changement de la filiere, ramene les promotions de la filiere selectionnee
+   */
   updateFilieres() {
     this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");    
     this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions =>
@@ -41,7 +45,9 @@ export class ConsultationPiloteComponent implements OnInit {
       
     this.updatePromotions();
   }
-
+/**
+   * Au changement de la promotion, ramene les modules de la promotion selectionnee
+   */
   updatePromotions() {
     this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
     this.modulesService.getModules(this.selectedPromotion.value).subscribe(responseModules => {
@@ -51,6 +57,9 @@ export class ConsultationPiloteComponent implements OnInit {
     });  
 
   }
+  /**
+   * Au changement du module, ramene les notes du module selectionne
+   */
   updateModules() {
     let reslt : any = [];
     this.selectedModule=<HTMLSelectElement>document.getElementById("module");
@@ -77,6 +86,9 @@ export class ConsultationPiloteComponent implements OnInit {
   
   
   }
+  /**
+   * Validation des notes du module
+   */
   validateNotes() {
     let reslt : any = [];
     this.selectedModule=<HTMLSelectElement>document.getElementById("module");
@@ -88,6 +100,7 @@ export class ConsultationPiloteComponent implements OnInit {
     console.log(reslt.idModule);
     
     this.etudiantsNotesService.validateEtudiantsNotes(reslt.idModule);
+    this.updateFilieres();          
 
     }
  

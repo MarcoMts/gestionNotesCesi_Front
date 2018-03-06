@@ -3,6 +3,7 @@ import {NoteService} from '../note.service';
 import { Note } from '../Model/note.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../model/user';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-consultation',
@@ -11,19 +12,24 @@ import { User } from '../model/user';
 })
 export class ConsultationComponent implements OnInit {
   
-  constructor(private noteService : NoteService) { }
+  constructor(private noteService : NoteService,private route: ActivatedRoute) { }
   notes: Array<Note> = [];
   users = [];
+  idEleve : any;
+  private sub: any;
   
 
-
   ngOnInit() {
-    //this.noteService.getNotes().then(notes => this.notes = notes);
-    this.noteService.getNotes().subscribe(responseNotes =>{
-
-     this.notes = responseNotes
-    console.log(this.notes);
-    });    
+    this.sub = this.route.params.subscribe(params => {
+      this.idEleve = +params['idEleve']; // (+) converts string 'id' to a number
+      //Recupere les notes de l'eleve connecte
+      this.noteService.getNotes(this.idEleve).subscribe(responseNotes =>{
+      this.notes = responseNotes
+      console.log("test idEleve",this.idEleve);
+      });    
+      // In a real app: dispatch action to load the details here.
+   });
+   
     
   }
 

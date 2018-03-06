@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NoteService} from '../note.service';
 import { Note } from '../Model/note.model';
 import {Module} from '../Model/module.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-consultation-intervenant',
@@ -10,7 +11,7 @@ import {Module} from '../Model/module.model';
 })
 export class ConsultationIntervenantComponent implements OnInit {
 
-  constructor(private filieresService : NoteService, private promotionsService : NoteService, private modulesService : NoteService, private etudiantsNotesService : NoteService) { }
+  constructor(private filieresService : NoteService, private promotionsService : NoteService, private modulesService : NoteService, private etudiantsNotesService : NoteService,private route: ActivatedRoute) { }
   
   selectedFiliere = null; 
   selectedPromotion = null; 
@@ -23,15 +24,25 @@ export class ConsultationIntervenantComponent implements OnInit {
   etudiantsNotes = [];
   notes: Array<Note> = [];
   isValid =false;
+  private sub: any;
+  idIntervenant: any;
   
   
   ngOnInit() {
-    this.filieresService.getFilieres().subscribe(responseFilieres => 
-      {
-        this.filieres = responseFilieres
-        this.updateFilieres(); 
-        
-      });    
+
+    this.sub = this.route.params.subscribe(params => {
+
+      this.idIntervenant = params['id']; 
+      this.filieresService.getFilieres().subscribe(responseFilieres => 
+        {
+          this.filieres = responseFilieres
+          this.updateFilieres(); 
+          
+        });    
+    });
+
+    //Ramene toutes les filieres au chargement de la page
+   
     let reslt : any = [];
 
     this.selectedModule= <HTMLSelectElement>document.getElementById("module");
@@ -42,22 +53,26 @@ export class ConsultationIntervenantComponent implements OnInit {
     }
   }
   /**
-   * Recupre toutes les filieres
+   * Au changement de la filiere, ramene les promotions de la filiere selectionnee
    */
   updateFilieres() {
+    //Recupere la filiere selectionnee dans le HTML
     this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");    
     this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions =>
       {
         this.promotions = responsePromotions
+        
         this.updatePromotions();
         
       } );    
   }
 /**
-   * Recupre toutes les promotions de la filiere selectionne 
+   * Au changement de la promotion, ramene les modules de la promotion selectionnee
    */
   updatePromotions() {
-    this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
+    //Recupere la promotion selectionnee dans le HTML
+    this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion"); 
+    //Ramene tout les modules d'une promotion, les modules dont l'intervenant intervient
     this.modulesService.getModulesIntervenant(this.selectedPromotion.value).subscribe(responseModules =>
       {
         this.modules = responseModules
@@ -69,7 +84,7 @@ export class ConsultationIntervenantComponent implements OnInit {
 
   }
   /**
-   * Recupre tout les modules où intervient l'intervenant dans la promotion selectionné
+   * Au changement du module, ramene les notes du module selectionne
    */
   updateModules() {
     let reslt : any = [];
@@ -79,6 +94,8 @@ export class ConsultationIntervenantComponent implements OnInit {
          reslt = this.modules[i]
       }
     }
+       // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
+
     this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(
       
       responseEtudiantsNotes => 
@@ -107,12 +124,18 @@ export class ConsultationIntervenantComponent implements OnInit {
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);   
    
   }
+  /**
+   * Modification des notes du module
+   */
   updateNotes() {
     
     this.etudiantsNotesService.setEtudiantsNotes(this.selectedModule.value,this.etudiantsNotes);
     console.log(this.etudiantsNotes);
     
     }
+    /**
+   * Ajout des notes au module
+   */
   createNotes() {
     this.etudiantsNotesService.createEtudiantsNotes(this.notes,this.etudiantsNotes);
     console.log(this.etudiantsNotes);

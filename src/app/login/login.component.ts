@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   user = [];   
   email : any;
   password : any;
-  error: any = null;
+  error = false;
   
   selectedUser : any = null;
   private sub: any;
@@ -27,68 +27,68 @@ export class LoginComponent implements OnInit {
       this.selectedUser=<HTMLSelectElement>document.getElementById("type");
       this.email=<HTMLSelectElement>document.getElementById("email");
       this.password=<HTMLSelectElement>document.getElementById("password");
-      console.log("Test login", this.email.value,this.password.value);
+      /**
+       * Si l'utilisateur est un eleve
+       */
       if(this.selectedUser.value==="Eleve")
       {
-        this.loginService.loginEleve(this.email.value,this.password.value).subscribe(responseLoginEleve => {
-          this.infoUser = responseLoginEleve
-          if(this.infoUser[0].isConnected)
+        this.loginService.loginEleve(this.email.value,this.password.value).subscribe(responseLoginEleve => 
           {
-            this.router.navigate(['/consultation']);     
-          }
-          else{
-            this.error = {
-              title: 'Email ou mot de passe incorrecte',
-              text: 'Recommencer'
-          }
-          console.log("infoUser Eleve ",this.infoUser);        
-          
-        }
-        });
+            this.infoUser = responseLoginEleve
+            console.log("test 38 : ",this.error);
+            
+
+            console.log("test infoUser",this.infoUser);
+            if(this.infoUser.isConnected==="true"){
+                //Redirection vers la page de consultation des notes pour l'utilisateur eleve 
+                this.router.navigate(['/consultation',this.infoUser.idEleve]); 
+                console.log("test 45 : ",this.error);
+                
+              }
+            else{
+              this.error = true;              
+              console.log("infoUser Eleve 50 ",this.infoUser);         
+            }
+         });
       }
       /**
        * Si l'utilisateur est un pilote
        */
       if(this.selectedUser.value==="Pilote")
       {
-        this.loginService.loginEleve(this.email,this.password).subscribe(responseLoginEleve =>{ 
-          this.infoUser = responseLoginEleve
-          
-          if(this.infoUser[0].isConnected)
-          {
-            this.router.navigate(['/consultationPilote']);
-          }
-          else{
-            this.error = {
-              title: 'Email ou mot de passe incorrecte',
-              text: 'Recommencer'
-           }
-        }
+        this.loginService.loginEleve(this.email,this.password).subscribe(responseLoginEleve =>
+          { 
+            this.infoUser = responseLoginEleve
+            
+            if(this.infoUser.isConnected==="true"){
+              //Redirection vers la page de consultation des notes pour l'utilisateur pilote 
+              this.router.navigate(['/consultationPilote']);
+              
+            }
+            else{
+              this.error = true;
+              console.log("test 70 : ",this.error);
+            }
           });  
-        console.log("infoUser Pilote ",this.infoUser);
-      }
+          console.log("test 72 : ",this.error);
+        }
+      /**
+       * Si l'utilisateur est un intervenant
+       */
       if(this.selectedUser.value==="Intervenant")
       {
         this.loginService.loginEleve(this.email,this.password).subscribe(responseLoginEleve => 
           {
-            
             this.infoUser = responseLoginEleve
-            if(this.infoUser[0].isConnected)
-            {
-              this.router.navigate(['/consultationIntervenant']);
+            if(this.infoUser.isConnected==="true"){
+              //Redirection vers la page de consultation des notes pour l'utilisateur intervenant 
+              this.router.navigate(['/consultationIntervenant',this.infoUser.idIntervenant]);
             }
             else{
-              this.error = {
-                title: 'Email ou mot de passe incorrecte',
-                text: 'Recommencer'
-              }
+              this.error = true;              
             }
           });  
-        console.log("infoUser Intervenant",this.infoUser);
-        
-        
+        console.log("infoUser Intervenant",this.infoUser);       
       }
   }
-  
-
 }
