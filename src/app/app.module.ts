@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ConsultationComponent } from './consultation/consultation.component';
@@ -23,10 +24,13 @@ import { ConsultationIntervenantComponent } from './consultation-intervenant/con
     HeaderComponent,
     ConsultationPiloteComponent,
     ConsultationIntervenantComponent
+    
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path:'consultation',component:ConsultationComponent},
       {path:'consultationPilote',component:ConsultationPiloteComponent},

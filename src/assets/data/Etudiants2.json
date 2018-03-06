@@ -1,0 +1,42 @@
+[
+    {  
+        "idEleve":"1",
+        "eleveNom":"BUZIT",
+        "elevePrenom":"Kévin",
+        "idNote":"1",
+        "noteValeur":null,
+        "noteIsValid":true
+   },  
+   {  
+        "idEleve":"2",
+        "eleveNom":"MARTINS",
+        "elevePrenom":"Marco",
+        "idNote":"2",
+        "noteValeur":null,
+        "noteIsValid":true
+    },
+    {  
+        "idEleve":"3",
+        "eleveNom":"BOURGEOIS",
+        "elevePrenom":"Erwan",
+        "idNote":"3",
+        "noteValeur":null,
+        "noteIsValid":true
+    },
+    {  
+        "idEleve":"4",
+        "eleveNom":"LE MOAL",
+        "elevePrenom":"Yann",
+        "idNote":"4",
+        "noteValeur":null,
+        "noteIsValid":true
+    },
+    {  
+        "idEleve":"5",
+        "eleveNom":"FERNANDES",
+        "elevePrenom":"Adrien",
+        "idNote":"5",
+        "noteValeur":null,
+        "noteIsValid":true
+    }   
+]

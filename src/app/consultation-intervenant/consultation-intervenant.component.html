@@ -12,7 +12,7 @@
     <option  *ngFor="let module of modules">{{module.libelleModule}}</option>
   </select>
 </div>
-<form>      
+<form  #myForm="ngForm" >      
   <table class="table">
     <thead>
       <tr>
@@ -24,7 +24,7 @@
       <tr>
         <td>{{etudiantNote.elevePrenom}} {{etudiantNote.eleveNom}}</td>
         <td>
-              <input type="float" class="form-control" id="noteValeur" value="{{etudiantNote.noteValeur}}">     
+              <input [name]="etudiantNote.idEleve" type="float" class="form-control" id="noteValeur" [(ngModel)]="etudiantNote.noteValeur">     
         </td>
       </tr>
       <input id="idEleve" name="idEleve" type="hidden" value="{{etudiantNote.idEleve}}">
@@ -32,11 +32,11 @@
     </tbody>
     <div *ngIf="isSaisi">
       
-      <button type="submit" class="btn btn-primary" (click)="updateNotes()">Modifier</button>
+      <button type="submit" class="btn btn-primary" (click)="updateNotes(myForm)">Modifier</button>
     </div>
     <div *ngIf="!isSaisi">
       
-      <button type="submit" class="btn btn-primary" (click)="createNotes()">Valider</button>
+      <button type="submit" class="btn btn-primary" (click)="createNotes(myForm)">Valider</button>
     </div>
     
   

@@ -2,8 +2,8 @@
     {
         "idModule":1,
         "libelleModule":"PHP",
-        "moduleIsSaisie":false,
-        "moduleIsValid":true
+        "moduleIsSaisie":true,
+        "moduleIsValid":false
     },
     {
         "idModule":2,

@@ -47,14 +47,14 @@ export class NoteService {
     }
 
 
-    setEtudiantsNotes( notes : Array<Note>) {
+    setEtudiantsNotes(module : any, notes : Array<Note>) {
         return this.http.get('./assets/data/Etudiants.json');
     }
-    createEtudiantsNotes( notes : Array<Note>,) {
+    createEtudiantsNotes(module : any, notes : Array<Note>,) {
         return this.http.get('./assets/data/Etudiants.json');
     }  
     validateEtudiantsNotes( idModule : string) {
-        return this.http.get('./assets/data/Etudiants.json');
+
     } 
     loginEleve(email : string, password : string) {
         return this.http.get('./assets/data/loginEleve.json').map((response : Response)=>response.json());

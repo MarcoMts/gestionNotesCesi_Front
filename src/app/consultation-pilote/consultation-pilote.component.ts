@@ -49,8 +49,6 @@ export class ConsultationPiloteComponent implements OnInit {
       }
     }
     this.isValid=reslt.moduleIsValid;   
-    
-
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
     
     this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes => this.etudiantsNotes = responseEtudiantsNotes); 
@@ -65,7 +63,7 @@ export class ConsultationPiloteComponent implements OnInit {
     }
     console.log(reslt.idModule);
     
-    this.etudiantsNotesService.createEtudiantsNotes(reslt.idModule);
+    this.etudiantsNotesService.validateEtudiantsNotes(reslt.idModule);
 
     }
  

@@ -12,7 +12,7 @@
     <option  *ngFor="let module of modules">{{module.libelleModule}}</option>
   </select>
 </div>
-<form>      
+<form  #myForm="ngForm">      
   <table class="table">
     <thead>
       <tr>
@@ -26,10 +26,7 @@
         <td>
               {{etudiantNote.noteValeur}}   
         </td>
-      </tr>
-      
-      
-      <input id="idNote" name="idNote" type="hidden" value="{{etudiantNote.idNote}}">
+      </tr>  
     </tbody>
     
   

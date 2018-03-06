@@ -26,7 +26,17 @@ export class ConsultationIntervenantComponent implements OnInit {
   
   ngOnInit() {
     this.filieresService.getFilieres().subscribe(responseFilieres => this.filieres = responseFilieres);    
-    this.updateFilieres();    
+    this.updateFilieres();  
+    let reslt : any = [];
+
+    this.selectedModule= <HTMLSelectElement>document.getElementById("module");
+    for (let i=0;i<this.modules.length;i++){
+      if(this.selectedModule.value == this.modules[i].libelleModule) {
+         reslt = this.modules[i]
+      }
+    }
+
+    this.isSaisi=reslt.moduleIsSaisie;   
   }
   updateFilieres() {
     this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");    
@@ -37,12 +47,13 @@ export class ConsultationIntervenantComponent implements OnInit {
   updatePromotions() {
     this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
     this.modulesService.getModulesIntervenant(this.selectedPromotion.value).subscribe(responseModules => this.modules = responseModules);  
-    this.updateModules();    
+    this.updateModules(); 
+
 
   }
   updateModules() {
     let reslt : any = [];
-    this.selectedModule=<HTMLSelectElement>document.getElementById("module");
+    this.selectedModule= <HTMLSelectElement>document.getElementById("module");
     for (let i=0;i<this.modules.length;i++){
       if(this.selectedModule.value == this.modules[i].libelleModule) {
          reslt = this.modules[i]
@@ -57,10 +68,24 @@ export class ConsultationIntervenantComponent implements OnInit {
   }
   updateNotes() {
     
-    this.etudiantsNotesService.createEtudiantsNotes(this.notes);
+    this.etudiantsNotesService.setEtudiantsNotes(this.selectedModule.value,this.etudiantsNotes);
+    console.log("test update");
+    for (let i=0;i<this.etudiantsNotes.length;i++){
+      //this.etudiantsNotes[i].noteValeur = this.myForm.noteValeur[i]; 
+      
+      console.log("test",this.etudiantsNotes[i]);
+      
+}
     }
   createNotes() {
-    this.etudiantsNotesService.setEtudiantsNotes(this.notes);
+
+    /*for (let i=0;i<this.etudiantsNotes.length;i++){
+          this.etudiantsNotes[i].noteValeur = 17; 
+          console.log("test",this.etudiantsNotes[i]);
+          
+    }*/
+    console.log(this.etudiantsNotes[0]);
+    this.etudiantsNotesService.createEtudiantsNotes(this.notes,this.etudiantsNotes);
   }
   
 
