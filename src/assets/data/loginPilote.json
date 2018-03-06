@@ -1,8 +1,6 @@
 [
    {  
-        "idPilote":"2",
-        "piloteNom":"MARTINS",
-        "pilotePrenom":"Marco",
-        "type":"pilote"
+    "isConnected":true,
+    "idIntervenant":12
     }
 ]

@@ -1,40 +1,40 @@
 [
     {  
-        "idPersonne":"1",
-        "personneNom":"BUZIT",
-        "personnePrenom":"Kévin",
+        "idEleve":"1",
+        "eleveNom":"BUZIT",
+        "elevePrenom":"Kévin",
         "idNote":"1",
         "noteValeur":15.9,
         "noteIsValid":true
    },  
    {  
-        "idPersonne":"2",
-        "personneNom":"MARTINS",
-        "personnePrenom":"Marco",
+        "idEleve":"2",
+        "eleveNom":"MARTINS",
+        "elevePrenom":"Marco",
         "idNote":"2",
         "noteValeur":14,
         "noteIsValid":true
     },
     {  
-        "idPersonne":"3",
-        "personneNom":"BOURGEOIS",
-        "personnePrenom":"Erwan",
+        "idEleve":"3",
+        "eleveNom":"BOURGEOIS",
+        "elevePrenom":"Erwan",
         "idNote":"3",
         "noteValeur":17,
         "noteIsValid":true
     },
     {  
-        "idPersonne":"4",
-        "personneNom":"LE MOAL",
-        "personnePrenom":"Yann",
+        "idEleve":"4",
+        "eleveNom":"LE MOAL",
+        "elevePrenom":"Yann",
         "idNote":"4",
         "noteValeur":15,
         "noteIsValid":true
     },
     {  
-        "idPersonne":"5",
-        "personneNom":"FERNANDES",
-        "personnePrenom":"Adrien",
+        "idEleve":"5",
+        "eleveNom":"FERNANDES",
+        "elevePrenom":"Adrien",
         "idNote":"5",
         "noteValeur":17,
         "noteIsValid":true

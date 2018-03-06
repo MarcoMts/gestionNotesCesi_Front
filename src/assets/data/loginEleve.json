@@ -1,8 +1,6 @@
 [
     {  
-        "idEleve":"1",
-        "eleveNom":"BUZIT",
-        "elevePrenom":"Kévin",
-        "type":"eleve"
+        "isConnected":true,
+        "idIntervenant":12
    }
 ]

@@ -1,8 +1,6 @@
 [
     {  
-         "idIntervenant":"3",
-         "intervenantNom":"BOURGEOIS",
-         "intervenantPrenom":"Erwan",
-         "type":"intervenant"
-    }
+        "isConnected":true,
+        "idIntervenant":12
+   } 
 ]
