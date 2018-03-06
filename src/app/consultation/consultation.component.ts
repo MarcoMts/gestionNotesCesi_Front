@@ -13,13 +13,17 @@ export class ConsultationComponent implements OnInit {
   
   constructor(private noteService : NoteService) { }
   notes: Array<Note> = [];
-  users: User[] = [];
+  users = [];
   
 
 
   ngOnInit() {
     //this.noteService.getNotes().then(notes => this.notes = notes);
-    this.noteService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
+    this.noteService.getNotes().subscribe(responseNotes =>{
+
+     this.notes = responseNotes
+    console.log(this.notes);
+    });    
     
   }
 

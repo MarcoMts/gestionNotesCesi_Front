@@ -1,3 +1,7 @@
+
+<div class="card card-container">
+    
+<div class="container">
 <div class="form-group">
   <label for="sel1">Filieres :</label>
   <select id="filiere" class="form-control" name="filiere" (change)="updateFilieres()" >
@@ -12,9 +16,10 @@
     <option  *ngFor="let module of modules" >{{module.libelleModule}}</option>
   </select>
 </div>
-<form  #myForm="ngForm" >      
-  <table class="table">
-    <thead>
+<form  #myForm="ngForm" >    
+    
+    <table class="table table-bordered" text-center>
+        <thead>
       <tr>
         <th scope="col">Etudiant</th>
         <th scope="col">Note</th>
@@ -24,23 +29,45 @@
       <tr>
         <td>{{etudiantNote.elevePrenom}} {{etudiantNote.eleveNom}}</td>
         <td>
-              <input [name]="etudiantNote.idEleve" type="float" class="form-control" id="noteValeur" [(ngModel)]="etudiantNote.noteValeur">     
+            <div *ngIf="isValid">
+              <div class="alert alert-success" role="alert" *ngIf="isValid">
+                  <label>{{etudiantNote.noteValeur}}</label>        
+              </div>
+            </div>
+            <div *ngIf="!isValid">           
+                  <input [name]="etudiantNote.idEleve" type="float" class="form-control" id="noteValeur" [(ngModel)]="etudiantNote.noteValeur">     
+            </div>
         </td>
       </tr>
       <input id="idEleve" name="idEleve" type="hidden" value="{{etudiantNote.idEleve}}">
       <input id="idNote" name="idNote" type="hidden" value="{{etudiantNote.idNote}}">
     </tbody>
-    <div *ngIf="isSaisi">
-      
-      <button type="submit" class="btn btn-primary" (click)="updateNotes(myForm)">Modifier</button>
-    </div>
-    <div *ngIf="!isSaisi">
-      
-      <button type="submit" class="btn btn-primary" (click)="createNotes(myForm)">Valider</button>
-    </div>
+    
     
   
     </table>
-  
+    <div *ngIf="!isValid">
+          
+      <div *ngIf="isSaisi">
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="updateNotes(myForm)" >Modifier</button>
+        </div>
+        <div *ngIf="!isSaisi">
+            <br>
+            
+          <button type="submit" class="btn btn-primary" (click)="createNotes(myForm)">Valider</button>
+        </div>
+    </div>
+    <div *ngIf="isValid">
+
+        <div class="alert alert-success" role="alert" *ngIf="isValid">
+            
+            <label>Notes validées</label>        
+        </div>
+    </div>
+      
+    
 </form>
+</div>
+</div>
 

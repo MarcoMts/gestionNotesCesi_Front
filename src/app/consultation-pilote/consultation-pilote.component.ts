@@ -59,14 +59,20 @@ export class ConsultationPiloteComponent implements OnInit {
          reslt = this.modules[i]
       }
     }
-    this.isValid=reslt.moduleIsValid;   
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
     
     this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes =>
       {
       this.etudiantsNotes = responseEtudiantsNotes
       console.log("test etudiants",this.etudiantsNotes);
-      
+        if(this.etudiantsNotes[0].isValid==0)
+        {
+          this.isValid=false;
+        }
+        else
+        {
+          this.isValid=true;
+        }      
       }); 
   
   

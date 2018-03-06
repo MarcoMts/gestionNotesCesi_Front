@@ -22,6 +22,7 @@ export class ConsultationIntervenantComponent implements OnInit {
   modules = [];
   etudiantsNotes = [];
   notes: Array<Note> = [];
+  isValid =false;
   
   
   ngOnInit() {
@@ -92,7 +93,14 @@ export class ConsultationIntervenantComponent implements OnInit {
         {
           this.isSaisi=true;
         }
-        
+        if(this.etudiantsNotes[0].isValid==0)
+        {
+          this.isValid=false;
+        }
+        else
+        {
+          this.isValid=true;
+        }
       }
     ); 
     
@@ -108,10 +116,6 @@ export class ConsultationIntervenantComponent implements OnInit {
   createNotes() {
     this.etudiantsNotesService.createEtudiantsNotes(this.notes,this.etudiantsNotes);
     console.log(this.etudiantsNotes);
-    
   }
-  
-
-
 }
 
