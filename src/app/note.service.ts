@@ -23,17 +23,31 @@ export class NoteService {
             return data.map(d => new Note(d.idNote, d.noteValeur, d.noteIsValid))
         })
     }*/
+    /**
+     * Ramene les notes d'un eleve
+     */
     getNotes(){
         return this.http.get(this.url+"notes/eleve/1").map((response : Response)=>response.json());
     }
+    /**
+     * Ramene toutes les filieres
+     */
     getFilieres() {
         return this.http.get(this.url+"filieres").map((response : Response)=>response.json());
     }
+    /**
+     * Ramene toutes promotions de 
+     * @param selectedFiliere 
+     */
     getPromotions(selectedFiliere : string) {
         
         return this.http.get(this.url+"promotions/1").map((response : Response)=>response.json());
         
     }
+    /**
+     * 
+     * @param selectedPromotion 
+     */
     getModules(selectedPromotion : string) {
        
         return this.http.get(this.url+"modules/1").map((response : Response)=>response.json());
@@ -58,7 +72,9 @@ export class NoteService {
 
     } 
     loginEleve(email : string, password : string) {
-        return this.http.get('./assets/data/loginEleve.json').map((response : Response)=>response.json());
+        let jsonInfo = "{\"login\":\""+email+"\",\"pwd\":\""+password+"\"}";
+        return this.http.post(this.url+"login/eleve",jsonInfo);
+
     } 
     loginPilote(email : string, password : string) {
         return this.http.get('./assets/data/loginPilote.json').map((response : Response)=>response.json());
