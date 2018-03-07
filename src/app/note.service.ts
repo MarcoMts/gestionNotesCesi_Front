@@ -11,8 +11,8 @@ import {Note} from "../app/model/note.model";
 export class NoteService {
     constructor(private http:Http) {
     }
-    private url:string="http://localhost/TestSlim/public/";
-    private urlIP:string="http://10.129.128.145:81/TestSlim/public/";
+    private urlIP:string="http://localhost/TestSlim/public/";
+    private url:string="http://10.129.128.145:81/TestSlim/public/";
     
     Notes : Array<Note>; 
     
@@ -29,7 +29,7 @@ export class NoteService {
      * Ramene les notes d'un eleve
      */
     getNotes(idEleve : string){
-        return this.http.get(this.url+"notes/eleve/1").map((response : Response)=>response.json());
+        return this.http.get(this.url+"notes/eleve/"+idEleve).map((response : Response)=>response.json());
     }
     /**
      * Ramene toutes les filieres
@@ -42,48 +42,69 @@ export class NoteService {
      * @param selectedFiliere 
      */
     getPromotions(selectedFiliere : string) {
+        console.log("selected FIliere : ",selectedFiliere);
         
-        return this.http.get(this.url+"promotions/1").map((response : Response)=>response.json());
-        
+        return this.http.get(this.url+"promotions/"+selectedFiliere).map((response : Response)=>response.json());
     }
     /**
      * Ramene tout les modules d'une promotion
      * @param selectedPromotion 
      */
-    getModules(selectedPromotion : string) {
-       
-        return this.http.get(this.url+"modules/1").map((response : Response)=>response.json());
+    getModules(selectedPromotion : string,selectedFiliere: string) {
+        console.log("test slected promotion service : ",selectedPromotion)
+        return this.http.get(this.url+"modules/"+selectedPromotion+"/"+selectedFiliere).map((response : Response)=>response.json());
         
     }
-    /**
+    /*
      * Ramene tout les modules d'une promotion, les modules ou l'intervenant intervient
      * @param selectedPromotion 
      */
-    getModulesIntervenant(selectedPromotion : string) {
-        return this.http.get(this.url+"modules/1/1").map((response : Response)=>response.json());
+    getModulesIntervenant(selectedPromotion : string,idIntervenant : string) {
+        console.log("promotion service ",selectedPromotion);
+        return this.http.get(this.url+"intervmodules/"+idIntervenant+"/"+selectedPromotion).map((response : Response)=>response.json());
     }
     /**
      * Ramene les notes des eleves d'un module 
      * @param selectedModule 
      */
     getEtudiantsNotes(selectedModule : string) {
-        return this.http.get(this.url+"notes/1").map((response : Response)=>response.json());
+        console.log("module choise",selectedModule);
+        
+        return this.http.get(this.url+"notes/"+selectedModule).map((response : Response)=>response.json());
     }
     /**
      * Modification d'un ensemble de notes
      * @param module 
      * @param notes 
      */
-    setEtudiantsNotes(module : any, notes : Array<Note>) {
-        return this.http.get('./assets/data/Etudiants.json');
+    setEtudiantsNotes(_module, notes) {
+        const jsonNotes = notes.map(n => {
+            return {
+                idModule: _module,
+                idEleve: n.idEleve,
+                noteValeur: n.noteValeur
+            };
+        });
+        return this.http.post(this.url+"notes/create",jsonNotes).toPromise().then(console.log).catch(console.log)
     }
     /**
      * Ajoute les notes des eleves a un module
      * @param module 
      * @param notes 
      */
-    createEtudiantsNotes(module : any, notes : Array<Note>,) {
-        return this.http.get('./assets/data/Etudiants.json');
+    createEtudiantsNotes(_module, notes) {
+        const jsonNotes = notes.map(n => {
+            return {
+                idModule: _module,
+                idEleve: n.idEleve,
+                noteValeur: n.noteValeur
+            };
+        });
+        console.log("jsonNotes",jsonNotes);
+        console.log("url",this.url+"notes/create");
+        return this.http.post(this.url+"notes/create",jsonNotes).toPromise().then(console.log).catch(console.log)
+
+        
     }  
     /**
      * Valide les notes les notes
@@ -91,7 +112,8 @@ export class NoteService {
      */
     validateEtudiantsNotes( idModule : string) {
         let body : any;
-        return this.http.put(this.url+"modules/"+idModule,body);
+        console.log("modulevalid",idModule);
+        return this.http.get(this.url+"modulesvalid/"+idModule).toPromise().then(console.log).catch(console.log);
     } 
     /**
      * Ramene true si les informations de connexion de l'eleve sont correcte
@@ -102,7 +124,7 @@ export class NoteService {
 
         let jsonLogin= {login:email, pwd:password};
         
-        return this.http.post(this.url+"login/eleve",jsonLogin).map((response : Response)=>response.json());;
+        return this.http.post(this.url+"login/eleve",jsonLogin).map((response : Response)=>response.json());
 
     } 
     /**

@@ -17,6 +17,7 @@ export class ConsultationPiloteComponent implements OnInit {
   selectedPromotion = null; 
   selectedModule = null; 
   selectedEtudiantsNotes = null; 
+  idModuleSelected= null; 
   isValid=false;
   filieres = [];    
   promotions = [];
@@ -29,19 +30,21 @@ export class ConsultationPiloteComponent implements OnInit {
     this.filieresService.getFilieres().subscribe(responseFilieres => {
       this.filieres = responseFilieres
       this.updateFilieres();          
-    });    
+    });   
   }
   /**
    * Au changement de la filiere, ramene les promotions de la filiere selectionnee
    */
   updateFilieres() {
-    this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");    
+    this.selectedFiliere=<HTMLSelectElement>document.getElementById("filiere");   
+    console.log("filiere",this.selectedFiliere.value); 
+    
+   
     this.promotionsService.getPromotions(this.selectedFiliere.value).subscribe(responsePromotions =>
       { this.promotions = responsePromotions
         console.log("promotions",this.promotions); 
         
       });    
-      console.log("promotions",this.promotions); 
       
     this.updatePromotions();
   }
@@ -50,7 +53,7 @@ export class ConsultationPiloteComponent implements OnInit {
    */
   updatePromotions() {
     this.selectedPromotion=<HTMLSelectElement>document.getElementById("promotion");    
-    this.modulesService.getModules(this.selectedPromotion.value).subscribe(responseModules => {
+    this.modulesService.getModules(this.selectedPromotion.value,this.selectedFiliere.value).subscribe(responseModules => {
       this.modules = responseModules
       this.updateModules();   
       
@@ -66,11 +69,13 @@ export class ConsultationPiloteComponent implements OnInit {
     for (let i=0;i<this.modules.length;i++){
       if(this.selectedModule.value == this.modules[i].libelleModule) {
          reslt = this.modules[i]
+         this.idModuleSelected = this.modules[i].idModule;
+         
       }
     }
    // this.etudiantsNotesService.getNotes().subscribe(responseNotes => this.notes = responseNotes);    
     
-    this.etudiantsNotesService.getEtudiantsNotes(this.selectedModule.value).subscribe(responseEtudiantsNotes =>
+    this.etudiantsNotesService.getEtudiantsNotes(this.idModuleSelected).subscribe(responseEtudiantsNotes =>
       {
       this.etudiantsNotes = responseEtudiantsNotes
       console.log("test etudiants",this.etudiantsNotes);
@@ -95,12 +100,11 @@ export class ConsultationPiloteComponent implements OnInit {
     for (let i=0;i<this.modules.length;i++){
       if(this.selectedModule.value == this.modules[i].libelleModule) {
          reslt = this.modules[i]
+         this.idModuleSelected = this.modules[i].idModule;
+         
       }
-    }
-    console.log(reslt.idModule);
-    
-    this.etudiantsNotesService.validateEtudiantsNotes(reslt.idModule);
-    this.updateFilieres();          
+    }    
+    this.etudiantsNotesService.validateEtudiantsNotes(this.idModuleSelected);
 
     }
  

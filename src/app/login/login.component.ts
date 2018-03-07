@@ -56,14 +56,13 @@ export class LoginComponent implements OnInit {
        */
       if(this.selectedUser.value==="Pilote")
       {
-        this.loginService.loginEleve(this.email,this.password).subscribe(responseLoginEleve =>
+        this.loginService.loginPilote(this.email.value,this.password.value).subscribe(responseLoginEleve =>
           { 
             this.infoUser = responseLoginEleve
             
             if(this.infoUser.isConnected==="true"){
               //Redirection vers la page de consultation des notes pour l'utilisateur pilote 
-              this.router.navigate(['/consultationPilote']);
-              
+              this.router.navigate(['/consultationPilote']); 
             }
             else{
               this.error = true;
@@ -77,7 +76,7 @@ export class LoginComponent implements OnInit {
        */
       if(this.selectedUser.value==="Intervenant")
       {
-        this.loginService.loginEleve(this.email,this.password).subscribe(responseLoginEleve => 
+        this.loginService.loginIntervenant(this.email.value,this.password.value).subscribe(responseLoginEleve => 
           {
             this.infoUser = responseLoginEleve
             if(this.infoUser.isConnected==="true"){

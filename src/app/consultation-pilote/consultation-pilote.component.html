@@ -6,14 +6,20 @@
 <div class="form-group">
   <label for="sel1">Filieres :</label>
   <select id="filiere" class="form-control" name="filiere" (change)="updateFilieres()" >
-    <option  *ngFor="let filiere of filieres" value="{{filiere.idFiliere}}">{{filiere.libelleFiliere}}</option>
+      <option>Selectionner une filiere</option>
+      
+    <option  *ngFor="let filiere of filieres" value="{{filiere.idFiliere}}" >{{filiere.libelleFiliere}}</option>
   </select>
   <label for="sel1">Promotions :</label>
   <select class="form-control" id="promotion" name="promotion" (change)="updatePromotions()">
+      <option>Selectionner une promotion</option>
+      
     <option  *ngFor="let promotion of promotions" value="{{promotion.idPromotion}}">{{promotion.libellePromotion}}</option>
   </select>
   <label for="sel1">Modules :</label>
   <select class="form-control" id="module" name="module" (change)="updateModules()">
+      <option>Selectionner un module</option>
+      
     <option  *ngFor="let module of modules">{{module.libelleModule}}</option>
   </select>
 </div>
